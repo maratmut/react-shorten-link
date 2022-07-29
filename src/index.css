@@ -1,13 +1,184 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+	--dark: #374151;
+	--darker: #1F2937;
+	--darkest: #111827;
+	--grey: #6B7280;
+	--pink: #EC4899;
+	--purple: #8B5CF6;
+	--light: #EEE;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+	margin: 0;
+	box-sizing: border-box;
+	font-family: "Fira sans", sans-serif;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	color: #FFF;
+	background-color: var(--dark);
+}
+
+.header {
+	padding: 2rem 1rem;
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+.header h1{ 
+    text-align: center;
+	font-size: 2.5rem;
+	font-weight: 300;
+	color: var(--grey);
+	margin-bottom: 1rem;
+}
+
+.short-link-form {
+	display: flex;
+}
+
+input, button {
+	appearance: none;
+	border: none;
+	outline: none;
+	background: none;
+}
+
+.base-input {
+	flex: 1 1 0%;
+	background-color: var(--darker);
+	padding: 1rem;
+	border-radius: 1rem;
+	margin-right: 1rem;
+	color: var(--light);
+	font-size: 1.25rem;
+}
+
+.base-input::placeholder {
+	color: var(--grey);
+}
+
+.btn-short {
+	color: var(--pink);
+	font-size: 1.25rem;
+	font-weight: 700;
+	background-image: linear-gradient(to right, var(--pink), var(--purple));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	cursor: pointer;
+	transition: 0.4s;
+}
+
+.btn-short:hover {
+	opacity: 0.8;
+}
+
+.btn-short:active {
+	opacity: 0.6;
+}
+
+.errors {
+	color: tomato;
+	margin-top: 7px;
+	font-size: 13px;
+}
+
+.errors::before {
+	display: inline;
+	content: "⚠ ";
+  }
+
+.main {
+	flex: 1 1 0%;
+	max-width: 800px;
+	margin: 0 auto;
+	width: 100%;
+}
+
+.task-list {
+	padding: 1rem;
+	list-style: none;
+	
+}
+
+
+
+.task {
+	background-color: var(--darkest);
+	padding: 1rem;
+	border-radius: 1rem;
+	margin-bottom: 1rem;
+}
+
+.task .content {
+	display: flex;
+	justify-content: space-between;
+}
+
+.task .content .text {
+	color: var(--light);
+	font-size: 1.125rem;
+	display: block;
+	transition: 0.4s;
+}
+
+@media (max-width: 780px) {
+	.header h1 {
+		font-size: 35px;
+	}
+	.task .content .text {
+		margin-left: 10px;
+	}
+	.task .content {
+		display: flex;
+		justify-content: space-between;
+	}
+	.task .content p {
+		display: none;
+	}
+ }
+
+ .task .content p {
+	width: 250px;
+ }
+
+
+.task .content .text:not(:read-only) {
+	color: var(--pink);
+}
+
+.task .actions {
+	display: flex;
+	margin: 0 -0.5rem;
+	margin-left: -165px
+}
+
+.task .actions button {
+	cursor: pointer;
+	margin: 0 0.5rem;
+	font-size: 1.125rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	transition: 0.4s;
+}
+
+.task .actions button:hover {
+	opacity: 0.8;
+}
+
+.task .actions button:active {
+	opacity: 0.6;
+}
+
+.task .actions .copy {
+	background-image: linear-gradient(to right, var(--pink), var(--purple));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.task .actions .delete {
+	color: crimson;
 }
